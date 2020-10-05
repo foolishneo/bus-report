@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '@tnsw/core';
 
 @Component({
   selector: 'tnsw-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'bus-report';
+  constructor(
+    private apiService: ApiService
+  ) { 
+    this.apiService.getBusData().subscribe(data => console.log(data));
+  }
 }

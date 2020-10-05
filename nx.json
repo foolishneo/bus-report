@@ -29,6 +29,9 @@
     "bus-report-e2e": {
       "tags": [],
       "implicitDependencies": ["bus-report"]
+    },
+    "core": {
+      "tags": []
     }
   }
 }

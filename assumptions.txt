@@ -1,0 +1,2 @@
+- Angular Material is the selected UI library
+- Jest is the selected test library
