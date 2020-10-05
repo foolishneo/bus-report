@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "projects": {
+    "bus-report": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/bus-report",
+      "sourceRoot": "apps/bus-report/src",
+      "prefix": "tnsw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bus-report",
+            "index": "apps/bus-report/src/index.html",
+            "main": "apps/bus-report/src/main.ts",
+            "polyfills": "apps/bus-report/src/polyfills.ts",
+            "tsConfig": "apps/bus-report/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/bus-report/src/favicon.ico",
+              "apps/bus-report/src/assets"
+            ],
+            "styles": ["apps/bus-report/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bus-report/src/environments/environment.ts",
+                  "with": "apps/bus-report/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bus-report:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bus-report:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bus-report:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bus-report/tsconfig.app.json",
+              "apps/bus-report/tsconfig.spec.json",
+              "apps/bus-report/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/bus-report/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/bus-report/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "bus-report-e2e": {
+      "root": "apps/bus-report-e2e",
+      "sourceRoot": "apps/bus-report-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/bus-report-e2e/cypress.json",
+            "tsConfig": "apps/bus-report-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bus-report:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bus-report:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/bus-report-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/bus-report-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "bus-report"
+}
