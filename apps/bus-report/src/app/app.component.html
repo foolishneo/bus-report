@@ -1,0 +1,4 @@
+<h1>Bus Reports</h1>
+<div *ngFor="let item of (busData$|async)?.data">
+  <tnsw-bus-report [org]="item.organisation" [data]="item"></tnsw-bus-report>
+</div>

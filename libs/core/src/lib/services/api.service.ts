@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Environment } from '../models';
 import { Observable } from 'rxjs';
+
+import { BusServiceData, Environment } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiService {
     @Inject('ENVIRONMENT') private environment: Environment
   ) { }
 
-  getBusData(): Observable<any> {
-    return this.http.get(this.apiConfig.baseUrl + 'bus-services-data.json');
+  getBusData$(): Observable<BusServiceData> {
+    return this.http.get<BusServiceData>(this.apiConfig.baseUrl + this.apiConfig.busServicesData);
   }
 }

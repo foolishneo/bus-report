@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from '@tnsw/core';
+import { Observable } from 'rxjs';
+
+import { ApiService, BusServiceData } from '@tnsw/core';
 
 @Component({
   selector: 'tnsw-root',
@@ -7,9 +9,10 @@ import { ApiService } from '@tnsw/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-    private apiService: ApiService
-  ) { 
-    this.apiService.getBusData().subscribe(data => console.log(data));
+    
+  busData$: Observable<BusServiceData>;
+
+  constructor(private apiService: ApiService) { 
+    this.busData$ = this.apiService.getBusData$();    
   }
 }

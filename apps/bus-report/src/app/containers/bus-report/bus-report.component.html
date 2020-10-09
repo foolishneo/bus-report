@@ -1,0 +1,18 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>{{data.organisation}} - {{data.date}}</h3>
+      </mat-panel-title>      
+    </mat-expansion-panel-header>
+    <div>
+      <tnsw-bus-data-table [data]="data.busData"></tnsw-bus-data-table>
+    </div>
+    <div class="p-2">
+      <mat-form-field class="full-width">        
+        <textarea [(ngModel)]='notes' matInput placeholder="Enter notes here"></textarea>
+      </mat-form-field>
+      <button mat-raised-button (click)="saveNotes(data.organisation)" color="primary" class="p-2">Save Notes</button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

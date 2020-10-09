@@ -1,2 +1,3 @@
 - Angular Material is the selected UI library
 - Jest is the selected test library
+- I use organisation text value as key for local storage so it needs to be unique. If not, we can easily set up an unique id for the stored note.

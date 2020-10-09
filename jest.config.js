@@ -1,3 +1,7 @@
 module.exports = {
-  projects: ['<rootDir>/apps/bus-report', '<rootDir>/libs/core'],
+  projects: [
+    '<rootDir>/apps/bus-report',
+    '<rootDir>/libs/core',
+    '<rootDir>/libs/material-ui',
+  ],
 };

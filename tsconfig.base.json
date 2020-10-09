@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tnsw/core": ["libs/core/src/index.ts"]
+      "@tnsw/core": ["libs/core/src/index.ts"],
+      "@tnsw/material-ui": ["libs/material-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

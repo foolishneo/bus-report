@@ -1,16 +1,35 @@
-import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { Environment, mockData } from '../models';
 import { ApiService } from './api.service';
 
-describe('ApiService', () => {
+const testData = mockData;
+
+describe('ApiService', () => {  
   let service: ApiService;
+  const http = {
+    get: jest.fn(() =>
+      of(testData)
+    )
+  };
+
+  const env: Environment = {
+    production: false,
+    apiConfig: {
+      baseUrl: '/assets/',
+      busServicesData: 'bus-services-data.json'
+    }
+  };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ApiService);
-  });
+    service = new ApiService(http as any, env);    
+  });  
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('getBusData$(): should return a BusServiceData object', () => {
+    service.getBusData$().subscribe(busData => {
+      expect(busData.data).toBeDefined();
+      expect(busData.data.length).toBe(1);
+      expect(busData.data[0].organisation).toBe('Sydney Buses');
+    });    
   });
 });
