@@ -39,6 +39,8 @@ The `BusDataTable` component uses Material to construct the data table.
 
 - Unit tests for components
 
+- Provide a facility to leave notes about each organisation. There is no provided endpoint for the notes form submission. The data do not need to be saved to a server/database.
+
 ## Requirements not implemented
 
 - I do not display data in a list as data table is more suitable for the purpose.
