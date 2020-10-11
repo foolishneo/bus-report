@@ -42,3 +42,13 @@ The `BusDataTable` component uses Material to construct the data table.
 ## Requirements not implemented
 
 - I do not display data in a list as data table is more suitable for the purpose.
+
+## Run the application
+
+`npm start` and navigate to `http://localhost:4200/`
+
+## Run the tests
+
+`npm run test`
+
+You can also check out the test coverage reports in the `coverage` folder
