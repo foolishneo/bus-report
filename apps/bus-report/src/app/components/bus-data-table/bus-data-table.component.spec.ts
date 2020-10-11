@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CoreModule } from '@tnsw/core';
+import { MaterialUiModule } from '@tnsw/material-ui';
+
 import { BusDataTableComponent } from './bus-data-table.component';
 
 describe('BusDataTableComponent', () => {
@@ -8,7 +11,8 @@ describe('BusDataTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BusDataTableComponent ]
+      imports: [ CoreModule, MaterialUiModule ],
+      declarations: [ BusDataTableComponent ]      
     })
     .compileComponents();
   });

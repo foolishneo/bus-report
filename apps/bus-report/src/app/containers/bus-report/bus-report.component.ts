@@ -15,8 +15,13 @@ export class BusReportComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  ngOnInit(): void { 
-    this.notes = this.localStorageService.load(this.org).notes;    
+  ngOnInit(): void {     
+    const storageNotes = this.localStorageService.load(this.org);
+    if (storageNotes !== undefined) {
+      this.notes = storageNotes.notes;
+    } else {
+      this.notes = '';
+    }    
   }
 
   saveNotes(org: string) {    

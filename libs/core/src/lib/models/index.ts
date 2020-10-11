@@ -4,3 +4,4 @@ export interface Environment {
 }
 
 export * from './bus-services';
+export * from './local-storage-notes';
